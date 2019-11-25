@@ -1,0 +1,2 @@
+{"timestamp":"2019-11-25 11:57:03 PM","level":"error","url":"http://localhost:3000/news","message":"Test error"}
+{"timestamp":"2019-11-26 12:01:32 AM","level":"error","url":"http://localhost:3000/news/5ddaf56f75dd92529884f47","message":"Cast to ObjectId failed for value \"5ddaf56f75dd92529884f47\" at path \"_id\" for model \"Article\""}
