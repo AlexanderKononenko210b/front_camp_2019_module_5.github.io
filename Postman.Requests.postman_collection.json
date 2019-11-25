@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "446195c1-777e-4784-b9ce-36925571feaf",
+		"name": "Postman.Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/news",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"author\":\"Science X staff\",\n    \"title\":\"NFL DFS for Week 12: Best DraftKings, FanDuel daily Fantasy football picks, lineups, strategy, stacks - CBS Sports\",\n    \"description\":\"SportsLine's Mike McClure, a DFS pro with almost $2M in winnings, gives optimal lineup advice.\",\n    \"url\":\"https://www.cbssports.com/nfl/news/nfl-dfs-for-week-12-best-draftkings-fanduel-daily-fantasy-football-picks-lineups-strategy-stacks/\",\n    \"urlToImage\":\"https://sportshub.cbsistatic.com/i/r/2019/07/23/e7794897-613a-4d53-97a5-6632fdb907af/thumbnail/1200x675/1a8a9e8c21fb03f5422f79a2cd46ef49/michae-thomas-1400.jpg\",\n    \"publishedAt\":\"2019-11-24T14:11:00Z\",\n    \"content\":\"The Week 12 NFL DFS player pool is headlined by Christian McCaffrey and Michael Thomas, the two most expensive players for daily Fantasy football tournaments.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news"
+					]
+				},
+				"description": "Article add."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/news/5ddabdaf7424013b90433e27",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"propName\": \"title\",\n\t\t\"value\": \"New title\"\n\t},\n\t{\n\t\t\"propName\": \"content\",\n\t\t\"value\": \"New content\"\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/news/5ddabdaf7424013b90433e27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"5ddabdaf7424013b90433e27"
+					]
+				},
+				"description": "Update article."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/news",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news"
+					]
+				},
+				"description": "Get all articles."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/news/5ddad022f4656c1c081b5fa3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news/5ddad022f4656c1c081b5fa3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"5ddad022f4656c1c081b5fa3"
+					]
+				},
+				"description": "Delete article."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/news/5ddabdaf7424013b90433e27",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news/5ddabdaf7424013b90433e27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"5ddabdaf7424013b90433e27"
+					]
+				},
+				"description": "Get article by id."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
