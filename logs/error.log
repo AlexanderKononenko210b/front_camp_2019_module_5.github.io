@@ -1,10 +1,2 @@
-{"timestamp":"2019-11-24 11:22:38 PM","level":"error","url":"/news","message":"Test error"}
-{"timestamp":"2019-11-25 12:03:15 AM","level":"error","url":"/news","message":"Test error"}
-{"timestamp":"2019-11-25 12:10:08 AM","level":"error","url":"/5ddabdaf7424013b90433e1c","message":"Cannot read property '_id' of null"}
-{"timestamp":"2019-11-25 12:14:06 AM","level":"error","url":"/5ddabdaf7424013b90433e1c","message":"Cannot read property '_id' of null"}
-{"timestamp":"2019-11-25 12:14:16 AM","level":"error","url":"/5ddabdaf7424013b90433e1c","message":"Cannot read property '_id' of null"}
-{"timestamp":"2019-11-25 12:14:18 AM","level":"error","url":"/5ddabdaf7424013b90433e1c","message":"Cannot read property '_id' of null"}
-{"timestamp":"2019-11-25 12:15:36 AM","level":"error","url":"/5ddabdaf7424013b90433e1c","message":"Cannot read property '_id' of null"}
-{"timestamp":"2019-11-25 12:20:52 AM","level":"error","url":"","message":"ENOENT: no such file or directory, open 'E:\\FrontCamp_2019\\Lesson1\\front_camp_module_5\\static\\newsInit.json'"}
-{"timestamp":"2019-11-25 12:21:11 AM","level":"error","url":"","message":"ENOENT: no such file or directory, open 'E:\\FrontCamp_2019\\Lesson1\\front_camp_module_5\\static\\newsInit.json'"}
-{"timestamp":"2019-11-25 12:21:32 AM","level":"error","url":"","message":"ENOENT: no such file or directory, open 'E:\\FrontCamp_2019\\Lesson1\\front_camp_module_5\\static\\newsInit.json'"}
+{"timestamp":"2019-11-25 11:57:03 PM","level":"error","url":"http://localhost:3000/news","message":"Test error"}
+{"timestamp":"2019-11-26 12:01:32 AM","level":"error","url":"http://localhost:3000/news/5ddaf56f75dd92529884f47","message":"Cast to ObjectId failed for value \"5ddaf56f75dd92529884f47\" at path \"_id\" for model \"Article\""}

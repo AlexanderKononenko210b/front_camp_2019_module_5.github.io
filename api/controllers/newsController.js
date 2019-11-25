@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Article = require("../models/article");
-const errorHandler = require("../middleware/logger");
 
 exports.get_all_articles = (request, response, next) => {
     Article.find()
@@ -10,16 +9,13 @@ exports.get_all_articles = (request, response, next) => {
             if(result.length > 0) {
                 response.status(200).json(result);
             } else {
-                response.status(404).json("Articles not found");
+                response.status(404).json({
+                    message: "Articles wasn't found."
+                });
             }
         })
         .catch(error => {
-            errorHandler.error({
-                level: error.level || "error",
-                url: request.url,
-                message: error.message
-            });
-            response.status(500).json(error);
+            next(error);
         });
 };
 
@@ -36,16 +32,13 @@ exports.get_article_by_id = (request, response, next) => {
                     content: result.content
                 });
             } else {
-                response.status(404).json("Article not found");
+                response.status(404).json({
+                    message: "Article wasn't found."
+                });
             }
         })
         .catch(error => {
-            errorHandler.error({
-                level: error.level || "error",
-                url: request.url,
-                message: error.message
-            });
-            response.status(500).json(error);
+            next(error);
         });
 };
 
@@ -70,12 +63,7 @@ exports.post_add_article = (request, response, next) => {
             });
         })
         .catch(error => {
-            errorHandler.error({
-                level: error.level || "error",
-                url: request.url,
-                message: error.message
-            });
-            response.status(500).json(error);
+            next(error);
         });
 };
 
@@ -90,15 +78,18 @@ exports.put_article = (request, response, next) => {
     Article.update({ _id: id }, { $set: updateOps })
         .exec()
         .then(result => {
-            response.status(200).json(result);
+            if(result.nModified > 0) {
+                response.status(200).json({
+                    message: `Article with id = ${id} was updated successfully`
+                });
+            } else {
+                response.status(404).json({
+                    message: "Article for update wasn't found."
+                });
+            }
         })
         .catch(error => {
-            errorHandler.error({
-                level: error.level || "error",
-                url: request.url,
-                message: error.message
-            });
-            response.status(500).json(error);
+            next(error);
         });
 };
 
@@ -107,16 +98,17 @@ exports.delete_article = (request, response, next) => {
     Article.remove( { _id: id })
         .exec()
         .then(result => {
-            response.status(200).json({
-                message: `Delete action by article with id = ${id} was done`
-            });
+            if(result.deletedCount > 0) {
+                response.status(200).json({
+                    message: `Article with id = ${id} was deleted successfully`
+                });
+            } else {
+                response.status(404).json({
+                    message: "Article for delete wasn't found."
+                });
+            }
         })
         .catch(error => {
-            errorHandler.error({
-                level: error.level || "error",
-                url: request.url,
-                message: error.message
-            });
-            response.status(500).json(error);
+            next(error);
         });
 };

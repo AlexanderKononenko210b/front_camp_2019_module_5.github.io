@@ -4,8 +4,8 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const config = require("./config.js");
 const newsRoutes = require("./api/routes/newsRoutes");
-const databaseInit = require("./api/middleware/databaseInit");
-const errorHandler = require("./api/middleware/logger");
+const databaseInit = require("./api/middleware/databaseInitSvc");
+const errorHandler = require("./api/middleware/errorHandlerSvc");
 
 mongoose.connect(config.mongoConnectionString);
 databaseInit();
@@ -13,6 +13,8 @@ databaseInit();
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use("/news", newsRoutes);
 
@@ -22,18 +24,6 @@ app.use((request, response, next) => {
     next(error);
 });
 
-app.use((error, request, response, next) => {
-    response.status(error.status || 500);
-    response.json({
-        error: {
-            message: error.message
-        }
-    });
-    errorHandler.error({
-        level: error.level || "error",
-        url: request.url,
-        message: error.message
-    });
-});
+app.use(errorHandler);
 
 module.exports = app;
