@@ -1,25 +1,19 @@
 const mongoose = require("mongoose");
 const Article = require("../models/article");
 
-exports.get_all_articles = (request, response, next) => {
+exports.getAll = (request, response, next) => {
     Article.find()
         .select("title content _id")
         .exec()
         .then(result => {
-            if(result.length > 0) {
-                response.status(200).json(result);
-            } else {
-                response.status(404).json({
-                    message: "Articles wasn't found."
-                });
-            }
+            response.status(200).json(result);
         })
         .catch(error => {
             next(error);
         });
 };
 
-exports.get_article_by_id = (request, response, next) => {
+exports.getArticle = (request, response, next) => {
     const id = request.params.id;
     Article.findById(id)
         .select("title content _id")
@@ -42,7 +36,7 @@ exports.get_article_by_id = (request, response, next) => {
         });
 };
 
-exports.post_add_article = (request, response, next) => {
+exports.addArticle = (request, response, next) => {
     const article = new Article({
         _id: mongoose.Types.ObjectId(),
         author: request.body.author,
@@ -67,7 +61,7 @@ exports.post_add_article = (request, response, next) => {
         });
 };
 
-exports.put_article = (request, response, next) => {
+exports.updateArticle = (request, response, next) => {
     const id = request.params.id;
     const updateOps = {};
     const bodyData = [].slice.call(request.body);
@@ -93,7 +87,7 @@ exports.put_article = (request, response, next) => {
         });
 };
 
-exports.delete_article = (request, response, next) => {
+exports.deleteArticle = (request, response, next) => {
     const id = request.params.id;
     Article.remove( { _id: id })
         .exec()
