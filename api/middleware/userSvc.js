@@ -19,7 +19,11 @@ const userService = {
         });
     },
     facebookAuth: (accessToken, refreshToken, profile, done) => {
-        User.findOrCreate({ facebookId: profile.id })
+        User.findOrCreate({
+            login: (profile.emails[0].value || '').toLowerCase(),
+            password: "",
+            facebookId: profile.id
+        })
         .then((error, user) => {
             return error
                 ? done(error)

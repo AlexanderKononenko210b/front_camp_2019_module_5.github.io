@@ -11,6 +11,9 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    facebookId: {
+        type: String
+    }
     });
 
 module.exports = mongoose.model('User', userSchema);

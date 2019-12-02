@@ -9,7 +9,7 @@ const databaseInit = () => {
         .then(result => {
             if(result.length == 0) {
                 let articles = [];
-                fs.readFile(path.resolve(__dirname, "../static/newsInit.json"), (error, content) => {
+                fs.readFile(path.resolve(__dirname, "../assets/articles.json"), (error, content) => {
                     if(error) {
                         next(error);
                     }

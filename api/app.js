@@ -3,15 +3,16 @@ const app = express();
 const session = require("express-session");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const config = require("./config.js");
-const newsRoutes = require("./api/routes/newsRoutes");
-const userRoutes = require("./api/routes/userRoutes");
-const databaseInit = require("./api/middleware/databaseInitSvc");
-const errorHandler = require("./api/middleware/errorHandlerSvc");
+const config = require("../config.js");
+const newsRoutes = require("./routes/article");
+const userRoutes = require("./routes/user");
+const databaseInit = require("./middleware/databaseInitSvc");
+const errorHandler = require("./middleware/errorHandlerSvc");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 
 mongoose.connect(config.mongoConnect, {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
     });
