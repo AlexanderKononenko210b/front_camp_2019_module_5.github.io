@@ -3,7 +3,7 @@ const Article = require("../models/article");
 
 exports.getAll = (request, response, next) => {
     Article.find()
-        .select("title content _id")
+        .select("author title description url urlToImage publishedAt content _id")
         .exec()
         .then(result => {
             response.status(200).json(result);
@@ -16,14 +16,19 @@ exports.getAll = (request, response, next) => {
 exports.getArticle = (request, response, next) => {
     const id = request.params.id;
     Article.findById(id)
-        .select("title content _id")
+        .select("author title description url urlToImage publishedAt content _id")
         .exec()
         .then(result => {
             if(result) {
                 response.status(200).json({
                     _id: result._id,
                     title: result.title,
-                    content: result.content
+                    content: result.content,
+                    author: result.author,
+                    description: result.description,
+                    url: result.url,
+                    urlToImage: result.urlToImage,
+                    publishedAt: result.publishedAt,
                 });
             } else {
                 response.status(404).json({
@@ -52,7 +57,12 @@ exports.addArticle = (request, response, next) => {
         .then(result => {
             response.status(200).json({
                 _id: result._id,
+                author: result.author,
                 title: result.title,
+                description: result.description,
+                url: result.url,
+                urlToImage: result.urlToImage,
+                publishedAt: result.publishedAt,
                 content: result.content
             });
         })
@@ -69,17 +79,11 @@ exports.updateArticle = (request, response, next) => {
         updateOps[ops.propName] = ops.value;
     }
 
-    Article.update({ _id: id }, { $set: updateOps })
+    Article.updateOne({ _id: id }, { $set: updateOps })
         .exec()
         .then(result => {
-            if(result.nModified > 0) {
-                response.status(200).json({
-                    message: `Article with id = ${id} was updated successfully`
-                });
-            } else {
-                response.status(404).json({
-                    message: "Article for update wasn't found."
-                });
+            if(result) {
+                response.status(200).json({...result});
             }
         })
         .catch(error => {
@@ -93,13 +97,9 @@ exports.deleteArticle = (request, response, next) => {
         .exec()
         .then(result => {
             if(result.deletedCount > 0) {
-                response.status(200).json({
-                    message: `Article with id = ${id} was deleted successfully`
-                });
+                response.status(200).json({...result});
             } else {
-                response.status(404).json({
-                    message: "Article for delete wasn't found."
-                });
+                response.status(404).json({...result});
             }
         })
         .catch(error => {

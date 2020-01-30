@@ -1,2 +1,11 @@
 {"timestamp":"2019-12-2 9:12:31 PM","level":"error","url":"http://localhost:3000/users/reqister","message":"Not found"}
 {"timestamp":"2019-12-2 10:56:54 PM","level":"error","url":"http://localhost:3000/favicon.ico","message":"Not found"}
+{"timestamp":"2020-1-25 9:53:37 PM","level":"error","url":"http://localhost:3000/","message":"Not found"}
+{"timestamp":"2020-1-25 9:53:47 PM","level":"error","url":"http://localhost:3000/","message":"Not found"}
+{"timestamp":"2020-1-25 9:57:40 PM","level":"error","url":"http://localhost:3000/favicon.ico","message":"Not found"}
+{"timestamp":"2020-1-25 11:11:32 PM","level":"error","url":"http://localhost:3000/news/:5e2c992a56dbce3ecce00478","message":"Cast to ObjectId failed for value \":5e2c992a56dbce3ecce00478\" at path \"_id\" for model \"Article\""}
+{"timestamp":"2020-1-25 11:12:19 PM","level":"error","url":"http://localhost:3000/news/:5e2c992a56dbce3ecce00478","message":"Cast to ObjectId failed for value \":5e2c992a56dbce3ecce00478\" at path \"_id\" for model \"Article\""}
+{"timestamp":"2020-1-25 11:21:02 PM","level":"error","url":"http://localhost:3000/news/:5e2c992a56dbce3ecce00478","message":"Cast to ObjectId failed for value \":5e2c992a56dbce3ecce00478\" at path \"_id\" for model \"Article\""}
+{"timestamp":"2020-1-25 11:21:40 PM","level":"error","url":"http://localhost:3000/news/:5e2c992a56dbce3ecce00478","message":"Cast to ObjectId failed for value \":5e2c992a56dbce3ecce00478\" at path \"_id\" for model \"Article\""}
+{"timestamp":"2020-1-26 4:57:52 PM","level":"error","url":"http://localhost:3000/news/5ddabdaf7424013b","message":"Cast to ObjectId failed for value \"5ddabdaf7424013b\" at path \"_id\" for model \"Article\""}
+{"timestamp":"2020-1-26 6:59:12 PM","level":"error","url":"http://localhost:3000/news/:5e2db17b05b5af366866f6e7","message":"Cast to ObjectId failed for value \":5e2db17b05b5af366866f6e7\" at path \"_id\" for model \"Article\""}
